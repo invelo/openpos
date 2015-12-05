@@ -1,0 +1,126 @@
+{
+  "name": "openpos",
+  "title": "OpenPOS",
+  "version": "0.2.10",
+  "description": "OpenPOS client application",
+  "main": "index.js",
+  "preferGlobal": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dist": {
+    "lts": "0.2.8",
+    "stable": "0.2.8"
+  },
+  "bin": {
+    "opos": "bin/cli.js"
+  },
+  "browser": "./index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/invelo/openpos.git"
+  },
+  "author": {
+    "name": "Crew Moss",
+    "url": "http://crewmoss.com",
+    "email": "cm@crewmoss.com"
+  },
+  "contributors": [
+    {
+      "name": "OpenPOS",
+      "url": "http://openpos.org",
+      "email": "developers@openpos.org"
+    }
+  ],
+  "license": "ISC",
+  "bugs": {
+    "email": "support@openpos.org",
+    "url": "http://openpos.org/support"
+  },
+  "engines": {
+    "node": ">=5.1.0"
+  },
+  "homepage": "http://openpos.org",
+  "dependencies": {
+    "argx": "^1.3.1",
+    "bootstrap": "^3.3.6",
+    "chalk": "^1.1.1",
+    "commander": "^2.9.0",
+    "datatables": "^1.10.9",
+    "debug": "^2.2.0",
+    "download": "^4.4.3",
+    "fingerprintjs2": "^1.0.0-rc3",
+    "fs-extra": "^0.26.2",
+    "hogan.js": "^3.0.2",
+    "inquirer": "^0.11.0",
+    "joi": "^7.0.1",
+    "jquery": "^2.1.4",
+    "js-cookie": "^2.0.4",
+    "jsonwebtoken": "^5.4.1",
+    "keyboardjs": "^2.2.0",
+    "load-iframe": "^1.0.0",
+    "localforage": "^1.3.0",
+    "lodash": "^3.10.1",
+    "md5": "^2.0.0",
+    "minimatch": "^3.0.0",
+    "mkdirp": "^0.5.1",
+    "moment": "^2.10.6",
+    "ms": "^0.7.1",
+    "mssql": "^2.3.2",
+    "node-uuid": "^1.4.7",
+    "npm": "^3.5.1",
+    "page.js": "^4.13.3",
+    "pm2": "^0.15.10",
+    "postal": "^1.0.7",
+    "request": "^2.67.0",
+    "semver": "^5.1.0",
+    "socket.io-client": "^1.3.7",
+    "urijs": "^1.17.0",
+    "xcss": "^1.2.5"
+  },
+  "devDependencies": {
+    "deamdify": "^0.1.1",
+    "debowerify": "^1.3.1",
+    "decomponentify": "^0.1.0",
+    "deglobalify": "^0.2.0",
+    "grunt": "^0.4.5",
+    "grunt-banner": "^0.3.1",
+    "grunt-browserify": "^3.8.0",
+    "grunt-bump": "^0.3.4",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-copy": "^0.8.0",
+    "grunt-contrib-hogan": "^0.2.4",
+    "grunt-contrib-htmlmin": "^0.6.0",
+    "grunt-contrib-symlink": "^0.3.0",
+    "grunt-contrib-uglify": "^0.9.1",
+    "grunt-contrib-yuidoc": "^0.7.0",
+    "grunt-hogan": "^0.3.0",
+    "grunt-inline": "^0.3.6",
+    "grunt-jsdoc": "^0.6.3",
+    "jsdocs": "^0.1.0",
+    "pyrsmk-sheethub": "^0.6.2",
+    "qunitjs": "^1.20.0",
+    "webpack": "^1.12.9"
+  },
+  "opos": {
+    "modules": {
+      "ui": {
+        "required": true
+      },
+      "admin": {
+        "required": true
+      },
+      "utils": {
+        "required": true
+      },
+      "dev": {
+        "required": false
+      },
+      "rms": {
+        "required": true
+      }
+    },
+    "themes": {},
+    "schemas": {}
+  }
+}
