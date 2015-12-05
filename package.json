@@ -16,6 +16,11 @@
     "opos": "bin/cli.js"
   },
   "browser": "./index.js",
+  "directories": {
+    "bin": "./bin",
+    "doc": "./doc",
+    "lib": "./lib"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/invelo/openpos.git"

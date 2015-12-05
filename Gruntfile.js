@@ -181,8 +181,8 @@ module.exports = function(grunt) {
         version: '<%= pkg.version %>',
         url: '<%= pkg.homepage %>',
         options: {
-          paths: 'lib',
-          outdir: 'dist/docs'
+          paths: ['lib','bin'],
+          outdir: 'docs'
         }
       }
     },
@@ -197,7 +197,7 @@ module.exports = function(grunt) {
       html: {
         options: {
           position: 'top',
-          banner: "<%= htmlbanner %>",
+          banner: fs.readFileSync('lib/ui/assets/templates/banner.html', { encoding: 'utf8' }),
           linebreak: true
         },
         files: {
@@ -225,21 +225,26 @@ module.exports = function(grunt) {
     'hogan',
     'browserify',
     'copy:tmp',
+    'usebanner',
     'copy:dev',
     'clean',
     'yuidoc',
     'symlink'
   ]);
 
-  grunt.registerTask('full', [
+  grunt.registerTask('min', [
     'hogan',
     'browserify',
-    'uglify',
     'copy:tmp',
+    'uglify',
     'copy:dev',
     'clean',
     'yuidoc',
-    'symlink'
+    'symlink',
+  ]);
+
+  grunt.registerTask('docs', [
+    'yuidoc'
   ]);
 
   grunt.registerTask('release', [
