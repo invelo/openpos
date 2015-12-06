@@ -60,7 +60,7 @@ module.exports = function(grunt) {
           },
           {
             expand: true,
-            src: ['*.html'],
+            src: ['index.html'],
             cwd: 'lib/ui/assets/templates/',
             dest: 'tmp'
           }
@@ -72,7 +72,7 @@ module.exports = function(grunt) {
             expand: true,
             src: ['index.html'],
             cwd: 'tmp/',
-            dest: 'dist/<%= pkg.version %>'
+            dest: '../dist/<%= pkg.version %>'
           }
         ]
       },
@@ -82,7 +82,7 @@ module.exports = function(grunt) {
             expand: true,
             src: ['**'],
             cwd: 'tmp/',
-            dest: 'dist/<%= pkg.version %>'
+            dest: '../dist/<%= pkg.version %>'
           }
         ]
       }
@@ -162,17 +162,13 @@ module.exports = function(grunt) {
         overwrite: true
       },
       stable: {
-        src: 'dist/<%= pkg.dist.stable %>',
-        dest: 'dist/stable'
-      },
-      lts: {
-        src: 'dist/<%= pkg.dist.lts %>',
-        dest: 'dist/lts'
+        src: '../dist/<%= pkg.dist.stable %>',
+        dest: '../dist/stable'
       },
       dev: {
-        src: 'dist/<%= pkg.version %>',
-        dest: 'dist/dev'
-      },
+        src: '../dist/<%= pkg.version %>',
+        dest: '../dist/dev'
+      }
     },
     yuidoc: {
       compile: {
@@ -187,11 +183,11 @@ module.exports = function(grunt) {
       }
     },
     hogan: {
-        mytarget : {
-          options : { binderName : 'nodejs' },
-          src : 'lib/ui/assets/templates/*.mustache',
-          dest : 'lib/ui/templates.js'
-        }
+      mytarget : {
+        options : { binderName : 'nodejs' },
+        src : 'lib/ui/assets/templates/*.mustache',
+        dest : 'lib/ui/templates.js'
+      }
     },
     usebanner: {
       html: {
@@ -202,6 +198,16 @@ module.exports = function(grunt) {
         },
         files: {
           dist: [ 'tmp/index.html' ]
+        }
+      },
+      scripts: {
+        options: {
+          position: 'top',
+          banner: fs.readFileSync('lib/client/banner.js', { encoding: 'utf8' }),
+          linebreak: true
+        },
+        files: {
+          dist: [ 'tmp/opos.js','tmp/opos.min.js' ]
         }
       }
     }
@@ -237,6 +243,7 @@ module.exports = function(grunt) {
     'browserify',
     'copy:tmp',
     'uglify',
+    'usebanner',
     'copy:dev',
     'clean',
     'yuidoc',
@@ -254,6 +261,7 @@ module.exports = function(grunt) {
     'copy:tmp',
     'inline',
     'htmlmin',
+    'usebanner',
     'copy:dist',
     'clean',
     'yuidoc',
