@@ -1,9 +1,16 @@
 {
   "name": "@pos/app",
   "title": "OpenPOS",
-  "version": "0.2.11",
+  "version": "0.2.12",
   "description": "OpenPOS client application",
-  "keywords": ["pos","point-of-sale","opos","rms","retail","openpos"],
+  "keywords": [
+    "pos",
+    "point-of-sale",
+    "opos",
+    "rms",
+    "retail",
+    "openpos"
+  ],
   "main": "./lib/server",
   "preferGlobal": true,
   "scripts": {
