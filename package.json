@@ -14,6 +14,7 @@
   "main": "./lib/server",
   "preferGlobal": true,
   "scripts": {
+    "start": "node ./lib/server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
@@ -47,7 +48,7 @@
     "url": "http://openpos.org/support"
   },
   "engines": {
-    "node": ">=5.1.0"
+    "node": ">=5.1.1"
   },
   "homepage": "http://openpos.org",
   "dependencies": {
@@ -55,26 +56,29 @@
     "@pos/cli": "^1.1.0",
     "@pos/core": "^0.1.0",
     "@pos/define": "^0.1.0",
-    "@pos/httpd": "^0.1.0",
+    "@pos/httpd": "^1.0.0",
     "@pos/machine": "^0.2.0",
     "@pos/module": "^0.1.0",
     "@pos/org": "^0.1.0",
     "@pos/place": "^0.1.0",
     "@pos/pulse": "^0.1.0",
-    "@pos/rms": "^0.1.1",
+    "@pos/rms": "^2.0.1",
     "@pos/signal": "^0.1.0",
-    "@pos/ui": "^0.1.0",
+    "@pos/ui": "^0.1.1",
     "@pos/utils": "^0.1.0"
   },
   "devDependencies": {
     "@pos/dev": "^0.1.0"
   },
-  "openpos": {
-    "server": {
+  "config": {
+    "openpos": {
+      "title": "OpenPOS",
       "http": {
         "port": 80
       },
-      "https": {},
+      "https": {
+        "port": 443
+      },
       "ssl": {},
       "ip": "0.0.0.0"
     }
