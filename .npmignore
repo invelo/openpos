@@ -1,4 +1,4 @@
 node_modules
 dist
-views
-css
+docs
+.local
