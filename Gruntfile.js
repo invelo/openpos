@@ -18,7 +18,7 @@ module.exports = function(grunt) {
             pos: './pos/pos',
             admin: './admin/admin',
             pulse: './client/pulse',
-            rms: './rms/rms',
+            rms: '@pos/rms',
             pkg: '../package.json',
             route: 'page.js',
             logger: './dev/logger',
@@ -34,8 +34,7 @@ module.exports = function(grunt) {
             store: './client/store',
             signal: './client/signal',
             dev: './dev/dev',
-            ui: './ui/ui',
-            templates: './ui/templates',
+            ui: '@pos/ui',
             moment: 'moment'
           },
           browserifyOptions: {
@@ -135,14 +134,14 @@ module.exports = function(grunt) {
     clean: {
       all: ['tmp']
     },
-    htmlmin: {                                     // Task
-      dist: {                                      // Target
-        options: {                                 // Target options
+    htmlmin: {
+      dist: {
+        options: {
           removeComments: false,
           collapseWhitespace: true
         },
-        files: {                                   // Dictionary of files
-          'tmp/index.html': 'tmp/index.html'
+        files: {
+          'tmp/index.min.html': 'tmp/index.html'
         }
       }
     },
@@ -193,7 +192,7 @@ module.exports = function(grunt) {
       html: {
         options: {
           position: 'top',
-          banner: fs.readFileSync('lib/ui/assets/templates/banner.html', { encoding: 'utf8' }),
+          banner: fs.readFileSync('.local/banner.html', { encoding: 'utf8' }),
           linebreak: true
         },
         files: {
@@ -203,7 +202,7 @@ module.exports = function(grunt) {
       scripts: {
         options: {
           position: 'top',
-          banner: fs.readFileSync('lib/client/banner.js', { encoding: 'utf8' }),
+          banner: fs.readFileSync('.local/banner.js', { encoding: 'utf8' }),
           linebreak: true
         },
         files: {
@@ -226,37 +225,30 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-inline');
   grunt.loadNpmTasks('grunt-contrib-symlink');
 
-
   grunt.registerTask('default', [
-    'hogan',
     'browserify',
     'copy:tmp',
     'usebanner',
     'copy:dev',
     'clean',
-    'yuidoc',
     'symlink'
   ]);
-
   grunt.registerTask('min', [
-    'hogan',
     'browserify',
     'copy:tmp',
     'uglify',
+    'inline',
+    'htmlmin',
     'usebanner',
     'copy:dev',
     'clean',
-    'yuidoc',
     'symlink',
   ]);
-
   grunt.registerTask('docs', [
     'yuidoc'
   ]);
-
   grunt.registerTask('release', [
     'bump',
-    'hogan',
     'browserify',
     'copy:tmp',
     'inline',
@@ -267,5 +259,4 @@ module.exports = function(grunt) {
     'yuidoc',
     'symlink'
   ]);
-
 };
